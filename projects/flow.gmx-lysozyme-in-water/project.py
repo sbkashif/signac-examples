@@ -5,7 +5,7 @@ from flow import FlowProject
 
 import pexpect  # Used to automate interaction with GROMACS interface.
 
-gmx_exec = "gmx_mpi"  # Assumes mpi build
+gmx_exec = "gmx"  # Assumes mpi build
 mpi_exec = "mpirun"
 
 """Define file level constants."""
@@ -94,9 +94,9 @@ def _grompp_str(op_name, gro_name, checkpoint_file=None):
 
 def _mdrun_str(op_name, np=1, nt=None, verbose=False):
     """Helper function, returns mdrun command string for operation."""
-    num_threads = 1 if nt is None else nt
+    num_threads = 24 if nt is None else nt
     num_nodes = np // num_threads
-    cmd = 'OMP_NUM_THREADS={num_threads} {mpi_exec} -n {np} {gmx} mdrun -ntomp {num_threads} {verbose} -deffnm {op}'.format(
+    cmd = 'OMP_NUM_THREADS={num_threads} {gmx} mdrun -ntomp {num_threads} {verbose} -deffnm {op}'.format(
           np=num_nodes, mpi_exec=mpi_exec, gmx=gmx_exec, num_threads=num_threads, op=op_name, verbose='-v' if verbose else '')
     return workspace_command(cmd)
 
