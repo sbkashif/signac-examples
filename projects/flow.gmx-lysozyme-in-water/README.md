@@ -2,7 +2,7 @@
 
 This project provides a demonstration of a complete GROMACS workflow using signac and signac-flow.
 The simulation flow follows Justin Lemkul's
-[Lysozyme in Water Tutorial](http://www.bevanlab.biochem.vt.edu/Pages/Personal/justin/gmx-tutorials/lysozyme/),
+[Lysozyme in Water Tutorial](http://www.mdtutorials.com/gmx/lysozyme/index.html),
 illustrating how all key steps can be automated and simplified using signac and signac-flow.
 If you plan to use this to simulate a different system, note that the physics encoded by these
 parameter files may not be appropriate; you should modify the mdp files to model the
